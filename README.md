@@ -1,28 +1,30 @@
-# Experimental Robotics Laboratory - Assignment 1
 
-## 
+# 🤖 Vision-Based Navigation with ROSbot and ArUco Markers
 
-- Shima Amiri Fard, 5269794
+### Experimental Robotics | ROS 1 · Python · C++ · OpenCV · Gazebo
 
+A robotics project implementing **vision-based autonomous navigation** using a ROSbot and ArUco markers.
 
-- Mohammadreza Koolani, 5467640
+The system detects visual markers, aligns the robot with each target, and navigates through a predefined sequence.
 
+The project includes implementations in both **Gazebo simulation and a physical ROSbot**.
 
-- Mohammad Sabouri, 5659227
+---
 
+## 🎯 Project Overview
 
-- Reza Taleshi, 5029729
+The objective is to develop a marker-based navigation system that enables a mobile robot to identify and approach ArUco markers in a specified sequence.
 
-## Introduction
+The navigation sequence uses four markers:
 
-This project focuses on localizing, navigation and detecting four Aruco markers by a Rosbot in Gazebo simulation and with real robotm, which has a fixed camera.
+| Marker ID | Robot Behavior |
+|---|---|
+| 11 | Detect and approach marker 12 |
+| 12 | Detect and approach marker 13 |
+| 13 | Detect and approach marker 15 |
+| 15 | Complete the navigation task |
 
-
-The robot starts at the coordinates (0, 0), and there are four markers in the environment with IDs 11, 12, 13, and 15. The markers have the following meanings:
-- Marker 11: Rotate until you find Marker 12; then reach Marker 12.
-- Marker 12: Rotate until you find Marker 13; then reach Marker 13.
-- Marker 13: Rotate until you find Marker 15; then reach Marker 15.
-- Marker 15: Done! (Task completion marker)
+The robot uses camera observations to search for targets, adjust its orientation, and move toward each marker.
   
 **Note:** "Reach Marker xxx" means that one side of Marker xxx must be at least 200 pixels in the camera frame.
 
@@ -38,7 +40,7 @@ This project depends on few packages which are included in the whole package:
 
 
 
-## Architecture
+## 🧩 System Architecture
 
  This project consists of two nodes:
 - **Robot_controller Node:** Controls robot behavior and its written in python (its in **rosbot_bringup/scripts** folder).
@@ -129,11 +131,11 @@ Main:
         Pass (do nothing)
 ```
 
-## Simulation implementation
+## 🚀 Simulation implementation
 
 To download this project, you need to first clone the project: 
 ```bash
-git clone https://github.com/shimaamiri/Experimental_Assignment1.git
+git clone https://github.com/shimaamiri/Vision-Based-Navigation-with-ROSbot-and-ArUco-Markers.git
 ```
 Then, you need to build the project in the root directory:
 ```bash
@@ -152,7 +154,8 @@ Here is the simulation video:
 
 [![Watch here](simulation.gif)](https://youtu.be/CN031iupbz8?si=qhbarW10anAkJu2S)
 
-## Real robot Implementation 
+
+## 🤖 Real Robot Implementation
 
 ### How to Run
 
@@ -170,7 +173,7 @@ Here is the real robot video:
 
 [![Watch here](real.gif)](https://youtu.be/g6Qjz7wffTg?si=LhuIllJXepSKKEYV)
 
-## Drawback and Possible improvements
+## 🔍 Limitations & Possible Improvements
 
 - In the simulation in ubuntu, robot couldnt detect the marker 12 so we used to manually change robot or marker position inorder to detect it. But, with Docker robot could easily detect marker 12. Also in reality, the robot could easily detect markers. This can be accounted as one the drawbacks of ArUco. Therefore, a possible improvement can be using OpenCv functionalities rather than relying on Aruco.
 
@@ -178,6 +181,21 @@ Here is the real robot video:
 - One possible improvement can be defining a controler which control the robot speed depending on the error.
 
 
-- Instead of reaching the markers sequentially and searching for next marker, a possible improvement can be associating each marker with a certain instruction that once the robot reach each marker does a specific task. 
+- Instead of reaching the markers sequentially and searching for next marker, a possible improvement can be associating each marker with a certain instruction that once the robot reach each marker does a specific task.
+
+## 👥 Project Information
+
+**Course:** Experimental Robotics  
+**Project type:** University team assignment
+
+**Contributors:**
+- Shima Amiri Fard
+- Mohammadreza Koolani
+- Mohammad Sabouri
+- Reza Taleshi
+
+---
+
+*Developed as part of the Experimental Robotics coursework at the University of Genoa.*
 
 
